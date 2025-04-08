@@ -27,17 +27,19 @@ function createPath(end, prev) {
   return path.reverse();
 }
 
-function knightMoves(start, end) {
+function knightMoves(s, e) {
+  const start = coordToSpace(s);
+  const end = coordToSpace(e);
+
   const prev = BFS(start, end);
-  return createPath(end, prev);
+
+  const path = createPath(end, prev);
+  for (let i = 0; i < path.length; i += 1) path[i] = spaceToCoord(path[i]);
+  return path;
 }
 
 const adjList = createAdjacencyList();
-
-const start = coordToSpace([0, 0]);
-const end = coordToSpace([7, 7]);
-const path = knightMoves(start, end);
-for (let i = 0; i < path.length; i += 1) path[i] = spaceToCoord(path[i]);
+const path = knightMoves([0, 0], [7, 7]);
 
 console.log(`You made it in ${path.length - 1} moves! Here is your path:`);
 for (let i = 0; i < path.length; i += 1) console.log(path[i]);

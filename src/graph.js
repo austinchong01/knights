@@ -40,13 +40,10 @@ function createAdjacencyList() {
     for (let j = 0; j < 8; j += 1) {
       const coord = [];
       pushNeighbors([j, i], coord);
-      // list.push(coord);
       list[i*8 + j] = coord;
     }
   }
   return list;
 }
-
-// console.log?z(createAdjacencyList())
 
 export {coordToSpace, spaceToCoord, createAdjacencyList}
